@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\.cedf4671001ef40dd36a6d4ea961917941e4202b-audit.json",
+    "files": [
+        {
+            "date": 1688067907496,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-30-06-01-error.log",
+            "hash": "9b2335ec4ddf8f8f0851e7ef38c7d3c7443541c8bbbf3ee3e8368d01804a250d"
+        },
+        {
+            "date": 1688068808217,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-30-06-02-error.log",
+            "hash": "3f5bfa974c77a0e109a234519fe1328ab24bfde97a2c6a6efd2035668db50e2d"
+        },
+        {
+            "date": 1688072401307,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-30-06-03-error.log",
+            "hash": "618ea6f5d772af7fa8b11abd59ef938ab7d94fdd9adc5102b08f96e7028382b3"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -1,6 +1,6 @@
 export type IUser = {
   phoneNumber: string
-  role: string
+  role: 'seller' | 'buyer'
   password: string
   name: {
     firstName: string
@@ -9,4 +9,8 @@ export type IUser = {
   address: string
   budget: number
   income: number
+}
+
+export type IUsersFilters = {
+  searchTerm?: string
 }

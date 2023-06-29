@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\.126eddf782a6622a6e936592969420755b10430e-audit.json",
+    "files": [
+        {
+            "date": 1688067907492,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\CH-2023-30-06-01-success.log",
+            "hash": "26e84ec1bf250f39de1b77606062d0d42841165b86e974b8cb25d74984e99462"
+        },
+        {
+            "date": 1688068808215,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\CH-2023-30-06-02-success.log",
+            "hash": "f167f2da4295bcfc1c17c89caef174a0923502a5bebb9700b9bbe8e53111b525"
+        },
+        {
+            "date": 1688072401304,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\CH-2023-30-06-03-success.log",
+            "hash": "c14f2ee3a2fbf5093d677f2ca2a1a7ae66a4cf7355666f16b91d329ba5a3750d"
+        }
+    ],
+    "hashType": "sha256"
+}
