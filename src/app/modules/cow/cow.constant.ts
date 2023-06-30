@@ -45,3 +45,11 @@ export const Cowlabel: ILabel[] = ['for sale', 'sold out']
 export type ICategory = 'Dairy' | 'Beef' | 'DualPurpose'
 
 export const CowCategory: ICategory[] = ['Dairy', 'Beef', 'DualPurpose']
+
+export const CowSearchableFields = ['location', 'breed', 'category']
+export const CowFilterableFields = [
+  'searchTerm',
+  'location',
+  'breed',
+  'category',
+]

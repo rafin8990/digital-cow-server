@@ -9,4 +9,5 @@ router.post(
   validateRequest(CowValidation.createCowZodSchema),
   CowController.createCow
 )
+router.get('/', CowController.getAllCows)
 export default router

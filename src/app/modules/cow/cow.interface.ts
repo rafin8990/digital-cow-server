@@ -1,7 +1,7 @@
 export type ICow = {
   name: string
   age: number
-  price: string
+  price: number
   location:
     | 'Dhaka'
     | 'Chattogram'
@@ -23,4 +23,8 @@ export type ICow = {
   label: 'for sale' | 'sold out'
   category: 'Dairy' | 'Beef' | 'DualPurpose'
   seller: string
+}
+
+export type ICowsFilters = {
+  searchTerm?: string
 }
