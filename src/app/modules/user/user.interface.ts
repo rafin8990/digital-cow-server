@@ -10,7 +10,3 @@ export type IUser = {
   budget: number
   income: number
 }
-
-export type IUsersFilters = {
-  searchTerm?: string
-}
