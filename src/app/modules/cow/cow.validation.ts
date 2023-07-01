@@ -53,9 +53,11 @@ const updateCowZodSchema = z.object({
     category: z.enum([...CowCategory] as [string, ...string[]], {
       required_error: 'Category is required',
     }),
-    seller: z.string({
-      required_error: 'Seller Id is required',
-    }),
+    seller: z
+      .string({
+        required_error: 'Seller Id is required',
+      })
+      .optional(),
   }),
 })
 

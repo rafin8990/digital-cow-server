@@ -70,7 +70,7 @@ const deleteCow = catchAsync(async (req: Request, res: Response) => {
   sendResponse<ICow>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Semester deleted successfully !',
+    message: 'Cow deleted successfully !',
     data: result,
   })
 })

@@ -1,3 +1,6 @@
+import { Types } from 'mongoose'
+import { IUser } from '../user/user.interface'
+
 export type ICow = {
   name: string
   age: number
@@ -22,7 +25,7 @@ export type ICow = {
   weight: number
   label: 'for sale' | 'sold out'
   category: 'Dairy' | 'Beef' | 'DualPurpose'
-  seller: string
+  seller: Types.ObjectId | IUser
 }
 
 export type ICowsFilters = {

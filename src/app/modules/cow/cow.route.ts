@@ -9,6 +9,7 @@ router.post(
   validateRequest(CowValidation.createCowZodSchema),
   CowController.createCow
 )
+router.post('/post')
 router.get('/', CowController.getAllCows)
 router.get('/:id', CowController.getSingleCow)
 router.patch(

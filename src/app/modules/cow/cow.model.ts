@@ -1,7 +1,7 @@
 import { Model, Schema, model } from 'mongoose'
 import { CowBreed, CowCategory, CowLocation, Cowlabel } from './cow.constant'
 import { ICow } from './cow.interface'
-type cowModel = Model<ICow, object>
+type cowModel = Model<ICow, Record<string, unknown>>
 
 const cowSchema = new Schema<ICow>(
   {
@@ -42,12 +42,16 @@ const cowSchema = new Schema<ICow>(
       enum: CowCategory,
     },
     seller: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'User',
       required: true,
     },
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   }
 )
 
