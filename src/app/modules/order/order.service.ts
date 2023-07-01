@@ -6,6 +6,18 @@ import { User } from '../user/user.model'
 import { IOrder } from './order.interface'
 import { Order } from './order.model'
 
+const getAllOrder = async (): Promise<IOrder[] | null> => {
+  const result = await Order.find()
+    .populate({
+      path: 'seller',
+      model: 'User',
+    })
+    .populate({
+      path: 'buyer',
+      model: 'User',
+    })
+  return result
+}
 const createOrder = async (
   order: IOrder,
   id: string
@@ -68,4 +80,5 @@ const createOrder = async (
 
 export const OrderService = {
   createOrder,
+  getAllOrder,
 }

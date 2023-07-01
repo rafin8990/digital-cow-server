@@ -18,7 +18,7 @@ const moduleRoutes = [
     route: cowRoute,
   },
   {
-    path: '/post',
+    path: '/orders',
     route: OrderRoute,
   },
 ]

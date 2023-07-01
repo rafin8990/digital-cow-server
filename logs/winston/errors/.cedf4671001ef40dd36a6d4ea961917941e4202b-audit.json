@@ -64,6 +64,11 @@
             "date": 1688198639207,
             "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-01-07-14-error.log",
             "hash": "4685ac53180e7807c65d2c6510f458a352514bade6a22e6d680d6ed35da56c5a"
+        },
+        {
+            "date": 1688202780687,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-01-07-15-error.log",
+            "hash": "e40f5e675534086922679c225a2c01c588accf7728a61808ac2d64eb39247b0a"
         }
     ],
     "hashType": "sha256"
