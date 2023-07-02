@@ -19,6 +19,18 @@ const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
 const cow_model_1 = require("../cow/cow.model");
 const user_model_1 = require("../user/user.model");
 const order_model_1 = require("./order.model");
+const getAllOrder = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield order_model_1.Order.find()
+        .populate({
+        path: 'seller',
+        model: 'User',
+    })
+        .populate({
+        path: 'buyer',
+        model: 'User',
+    });
+    return result;
+});
 const createOrder = (order, id) => __awaiter(void 0, void 0, void 0, function* () {
     const session = yield mongoose_1.default.startSession();
     try {
@@ -64,4 +76,5 @@ const createOrder = (order, id) => __awaiter(void 0, void 0, void 0, function* (
 });
 exports.OrderService = {
     createOrder,
+    getAllOrder,
 };

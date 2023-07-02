@@ -22,7 +22,7 @@ const moduleRoutes = [
         route: cow_route_1.default,
     },
     {
-        path: '/post',
+        path: '/orders',
         route: order_route_1.default,
     },
 ];
