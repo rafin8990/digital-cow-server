@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
 const index_1 = __importDefault(require("./config/index"));
-// import { logger } from './shared/logger'
+const logger_1 = require("./shared/logger");
 process.on('uncaughtException', error => {
     console.log(error);
     process.exit(1);
@@ -25,20 +25,20 @@ function boostrap() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield mongoose_1.default.connect(index_1.default.database_url);
-            console.log(`🛢   Database is connected successfully`);
+            logger_1.console.log(`🛢   Database is connected successfully`);
             app_1.default.listen(index_1.default.port, () => {
-                console.log(`Application  listening on port ${index_1.default.port}`);
+                logger_1.console.log(`Application  listening on port ${index_1.default.port}`);
             });
         }
         catch (err) {
-            console.log('Failed to connect database', err);
+            logger_1.console.log('Failed to connect database', err);
         }
     });
 }
 process.on('unhandledRejection', error => {
     if (server) {
         server.close(() => {
-            console.log(error);
+            logger_1.console.log(error);
             process.exit(1);
         });
     }

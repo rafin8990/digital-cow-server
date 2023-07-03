@@ -20,26 +20,19 @@ const cow_model_1 = require("../cow/cow.model");
 const user_model_1 = require("../user/user.model");
 const order_model_1 = require("./order.model");
 const getAllOrder = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield order_model_1.Order.find()
-        .populate({
-        path: 'seller',
-        model: 'User',
-    })
-        .populate({
-        path: 'buyer',
-        model: 'User',
-    });
+    const result = yield order_model_1.Order.find();
     return result;
 });
-const createOrder = (order, id) => __awaiter(void 0, void 0, void 0, function* () {
+const createOrder = (order) => __awaiter(void 0, void 0, void 0, function* () {
     const session = yield mongoose_1.default.startSession();
     try {
         session.startTransaction();
-        const cow = yield cow_model_1.Cow.findById(id).populate('seller');
-        if (!cow) {
+        const { cow } = order;
+        const selectedCow = yield cow_model_1.Cow.findById(cow).populate('seller');
+        if (!selectedCow) {
             throw new ApiError_1.default(http_status_1.default.BAD_REQUEST, 'Cow not found');
         }
-        if (cow.label === 'sold out') {
+        if (selectedCow.label === 'sold out') {
             throw new ApiError_1.default(http_status_1.default.BAD_REQUEST, 'Cow is already Sold out . Try to buy another one');
         }
         const buyerId = order.buyer;
@@ -47,19 +40,21 @@ const createOrder = (order, id) => __awaiter(void 0, void 0, void 0, function* (
         if (!buyer || buyer.role !== 'buyer') {
             throw new ApiError_1.default(http_status_1.default.BAD_REQUEST, 'Invalid Buyer');
         }
-        if (buyer.budget < cow.price) {
+        if (buyer.budget < selectedCow.price) {
             throw new ApiError_1.default(http_status_1.default.BAD_REQUEST, 'Buyer have not enough money. Please Try to add  money and then Buy the cow');
         }
-        buyer.budget -= cow.price;
-        yield buyer.save();
-        const seller = yield user_model_1.User.findById(cow.seller);
+        if (buyer.budget) {
+            buyer.budget -= selectedCow.price;
+            yield buyer.save();
+        }
+        const seller = yield user_model_1.User.findById(selectedCow.seller);
         if (!seller || seller.role !== 'seller') {
             throw new ApiError_1.default(http_status_1.default.BAD_REQUEST, 'Invalid Seller');
         }
-        seller.income = (seller.income || 0) + cow.price;
+        seller.income = (seller.income || 0) + selectedCow.price;
         yield seller.save();
-        cow.label = 'sold out';
-        yield cow.save();
+        selectedCow.label = 'sold out';
+        yield selectedCow.save();
         yield session.commitTransaction();
         yield session.endSession();
     }
@@ -68,7 +63,7 @@ const createOrder = (order, id) => __awaiter(void 0, void 0, void 0, function* (
         yield session.endSession();
         throw error;
     }
-    const createOrder = yield (yield order_model_1.Order.create(order)).populate('buyer', 'seller');
+    const createOrder = yield (yield order_model_1.Order.create(order)).populate('cow', 'buyer');
     if (!createOrder) {
         throw new ApiError_1.default(400, 'Failed to create Order');
     }

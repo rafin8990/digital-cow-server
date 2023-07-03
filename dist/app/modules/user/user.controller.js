@@ -25,20 +25,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const http_status_1 = __importDefault(require("http-status"));
+const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const user_service_1 = require("./user.service");
 const createUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = __rest(req.body, []);
-    const result = yield user_service_1.UsersService.createUser(user);
-    res.status(200).json({
-        success: true,
-        message: 'user create successfully',
-        data: result,
-    });
+    try {
+        const user = __rest(req.body, []);
+        const result = yield user_service_1.UsersService.createUser(user);
+        res.status(200).json({
+            success: true,
+            message: 'user create successfully',
+            data: result,
+        });
+    }
+    catch (error) {
+        if (error.code === 11000) {
+            // MongoDB duplicate key error
+            throw new ApiError_1.default(500, 'Phone Number already exist');
+        }
+    }
 }));
 const getAllUsers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_service_1.UsersService.getAllUsers();
+    console.log(req.user);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,

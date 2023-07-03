@@ -23,31 +23,52 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderController = void 0;
+exports.AuthController = void 0;
 const http_status_1 = __importDefault(require("http-status"));
+const config_1 = __importDefault(require("../../../config"));
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
-const order_service_1 = require("./order.service");
-const createOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const order = __rest(req.body, []);
-    const result = yield order_service_1.OrderService.createOrder(order);
+const auth_service_1 = require("./auth.service");
+const LoginUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const loginData = __rest(req.body, []);
+    const result = yield auth_service_1.AuthService.loginUser(loginData);
+    const { refreshToken } = result, others = __rest(result
+    // set refresh token into the cookie
+    , ["refreshToken"]);
+    // set refresh token into the cookie
+    const cookieOption = {
+        secure: config_1.default.env === 'production' ? true : false,
+        httpOnly: true,
+    };
+    res.cookie('refreshToken', refreshToken, cookieOption);
+    // delete refresh token
+    if ('refreshToken' in result) {
+        delete result.refreshToken;
+    }
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Order Placed successfully',
-        data: result,
+        message: 'User Login Successfully',
+        data: others,
     });
 }));
-const getAllOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield order_service_1.OrderService.getAllOrder();
+const refreshToken = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { refreshToken } = req.cookies;
+    const result = yield auth_service_1.AuthService.refreshToken(refreshToken);
+    // set refresh token into the cookie
+    const cookieOption = {
+        secure: config_1.default.env === 'production' ? true : false,
+        httpOnly: true,
+    };
+    res.cookie('refreshToken', refreshToken, cookieOption);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Order retrieved successfully !',
+        message: 'User Login Successfully',
         data: result,
     });
 }));
-exports.OrderController = {
-    createOrder,
-    getAllOrder,
+exports.AuthController = {
+    LoginUser,
+    refreshToken,
 };
