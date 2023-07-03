@@ -99,6 +99,21 @@
             "date": 1688360407724,
             "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\CH-2023-03-07-11-success.log",
             "hash": "c3ac1e243e334f5963dc58d24c4937d339ce9a79fae2d23346d7d149b0dd05fb"
+        },
+        {
+            "date": 1688365032350,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\CH-2023-03-07-12-success.log",
+            "hash": "4d165c14f6675a05be22b415e1daadb1ffb5ac581aa6a9cdf3b641ae4fe129a0"
+        },
+        {
+            "date": 1688386430724,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\CH-2023-03-07-18-success.log",
+            "hash": "209d2df887d9c10d434c7e58bab9b497473325356e7d46eb737b9c18f77c2eb0"
+        },
+        {
+            "date": 1688390978715,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\successes\\CH-2023-03-07-19-success.log",
+            "hash": "39c6794903d295fd2ec58841e4c95db48d150766180dc143075ef23f5f6e8640"
         }
     ],
     "hashType": "sha256"

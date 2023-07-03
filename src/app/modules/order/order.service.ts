@@ -18,6 +18,10 @@ const getAllOrder = async (): Promise<IOrder[] | null> => {
     })
   return result
 }
+const getSingleOrder = async (id: string): Promise<IOrder | null> => {
+  const result = await Order.findById(id)
+  return result
+}
 const createOrder = async (
   order: IOrder,
   id: string
@@ -81,4 +85,5 @@ const createOrder = async (
 export const OrderService = {
   createOrder,
   getAllOrder,
+  getSingleOrder,
 }

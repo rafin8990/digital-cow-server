@@ -57,6 +57,7 @@ userSchema.methods.isUserExist = async function (
   const user = await User.findOne(
     { phoneNumber },
     {
+      _id: 1,
       phoneNumber: 1,
       password: 1,
       needsPasswordChange: 1,

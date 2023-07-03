@@ -238,3 +238,15 @@
   label: 'CH',
   timestamp: '2023-07-03T05:48:41.772Z'
 }
+{
+  message: '🛢   Database is connected successfully',
+  level: 'info',
+  label: 'CH',
+  timestamp: '2023-07-03T05:48:55.861Z'
+}
+{
+  message: 'Application  listening on port 5000',
+  level: 'info',
+  label: 'CH',
+  timestamp: '2023-07-03T05:48:55.871Z'
+}

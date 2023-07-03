@@ -9,5 +9,10 @@ router.post(
   validateRequest(LoginValidation.loginZodSchema),
   AuthController.LoginUser
 )
+router.post(
+  '/refresh-token',
+  validateRequest(LoginValidation.refreshTokenZodSchema),
+  AuthController.refreshToken
+)
 
 export default router

@@ -27,6 +27,7 @@ const createUser: RequestHandler = catchAsync(
 
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await UsersService.getAllUsers()
+  console.log(req.user)
 
   sendResponse<IUser[]>(res, {
     statusCode: httpStatus.OK,
