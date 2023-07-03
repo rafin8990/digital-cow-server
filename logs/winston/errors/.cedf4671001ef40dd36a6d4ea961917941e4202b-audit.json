@@ -114,6 +114,16 @@
             "date": 1688390978718,
             "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-03-07-19-error.log",
             "hash": "53fe49f18cf4e6d4270aa9cab96336ed8a9bc947900fff50325b48e0382cb83a"
+        },
+        {
+            "date": 1688393247505,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-03-07-20-error.log",
+            "hash": "f3b2fd1bdef068d092a92d08bfe8ba64e14d687b0fe2d81960c9af1ca7fddd81"
+        },
+        {
+            "date": 1688396610735,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-03-07-21-error.log",
+            "hash": "bec8feb4f60a7b464e1bc7a6a32e4cb7c21b459d386e861ea1b0b3d8175b37a5"
         }
     ],
     "hashType": "sha256"

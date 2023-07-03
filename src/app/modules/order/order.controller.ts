@@ -8,9 +8,10 @@ import { OrderService } from './order.service'
 const createOrder: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { ...order } = req.body
-    const id = req.params.id
-    const result = await OrderService.createOrder(order, id)
-    res.status(200).json({
+
+    const result = await OrderService.createOrder(order)
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: 'Order Placed successfully',
       data: result,
@@ -28,19 +29,8 @@ const getAllOrder = catchAsync(async (req: Request, res: Response) => {
     data: result,
   })
 })
-const getSingleOrder = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id
-  const result = await OrderService.getSingleOrder(id)
 
-  sendResponse<IOrder[]>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Order retrieved successfully !',
-    data: result,
-  })
-})
 export const OrderController = {
   createOrder,
   getAllOrder,
-  getSingleOrder,
 }

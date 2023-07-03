@@ -8,32 +8,18 @@ import { Order } from './order.model'
 
 const getAllOrder = async (): Promise<IOrder[] | null> => {
   const result = await Order.find()
-    .populate({
-      path: 'seller',
-      model: 'User',
-    })
-    .populate({
-      path: 'buyer',
-      model: 'User',
-    })
   return result
 }
-const getSingleOrder = async (id: string): Promise<IOrder | null> => {
-  const result = await Order.findById(id)
-  return result
-}
-const createOrder = async (
-  order: IOrder,
-  id: string
-): Promise<IOrder | null> => {
+const createOrder = async (order: IOrder): Promise<IOrder | null> => {
   const session = await mongoose.startSession()
   try {
     session.startTransaction()
-    const cow = await Cow.findById(id).populate('seller')
-    if (!cow) {
+    const { cow } = order
+    const selectedCow = await Cow.findById(cow).populate('seller')
+    if (!selectedCow) {
       throw new ApiError(httpStatus.BAD_REQUEST, 'Cow not found')
     }
-    if (cow.label === 'sold out') {
+    if (selectedCow.label === 'sold out') {
       throw new ApiError(
         httpStatus.BAD_REQUEST,
         'Cow is already Sold out . Try to buy another one'
@@ -47,24 +33,25 @@ const createOrder = async (
       throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Buyer')
     }
 
-    if (buyer.budget < cow.price) {
+    if ((buyer.budget as number) < selectedCow.price) {
       throw new ApiError(
         httpStatus.BAD_REQUEST,
         'Buyer have not enough money. Please Try to add  money and then Buy the cow'
       )
     }
+    if (buyer.budget) {
+      buyer.budget -= selectedCow.price
+      await buyer.save()
+    }
 
-    buyer.budget -= cow.price
-    await buyer.save()
-
-    const seller = await User.findById(cow.seller)
+    const seller = await User.findById(selectedCow.seller)
     if (!seller || seller.role !== 'seller') {
       throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Seller')
     }
-    seller.income = (seller.income || 0) + cow.price
+    seller.income = (seller.income || 0) + selectedCow.price
     await seller.save()
-    cow.label = 'sold out'
-    await cow.save()
+    selectedCow.label = 'sold out'
+    await selectedCow.save()
 
     await session.commitTransaction()
     await session.endSession()
@@ -73,9 +60,7 @@ const createOrder = async (
     await session.endSession()
     throw error
   }
-  const createOrder = await (
-    await Order.create(order)
-  ).populate('buyer', 'seller')
+  const createOrder = await (await Order.create(order)).populate('cow', 'buyer')
   if (!createOrder) {
     throw new ApiError(400, 'Failed to create Order')
   }
@@ -85,5 +70,4 @@ const createOrder = async (
 export const OrderService = {
   createOrder,
   getAllOrder,
-  getSingleOrder,
 }

@@ -4,9 +4,9 @@ import { IOrder } from './order.interface'
 type cowModel = Model<IOrder, Record<string, unknown>>
 
 const orderSchema = new Schema<IOrder>({
-  seller: {
+  cow: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Cow',
     required: true,
   },
   buyer: {

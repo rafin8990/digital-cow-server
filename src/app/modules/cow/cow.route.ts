@@ -9,7 +9,7 @@ const router = express.Router()
 router.post(
   '/create-cow',
   validateRequest(CowValidation.createCowZodSchema),
-  auth(ENUM_USER_ROLE.SELLER),
+  // auth(ENUM_USER_ROLE.SELLER),
   CowController.createCow
 )
 router.get(
