@@ -79,6 +79,26 @@
             "date": 1688283696845,
             "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-02-07-13-error.log",
             "hash": "ea50d4bc2576eb74600f90548316272723af884bf2a0f66965c0b58f7e5d7142"
+        },
+        {
+            "date": 1688330094495,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-03-07-02-error.log",
+            "hash": "2a9b02d1306c587ade4b14beec1b536567f1b7159904cd324f8bffcb18bb98e2"
+        },
+        {
+            "date": 1688331832877,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-03-07-03-error.log",
+            "hash": "2d2db031c4055480485417e88ca92257985eed0b386fb0b6430397cb484142b2"
+        },
+        {
+            "date": 1688357570802,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-03-07-10-error.log",
+            "hash": "de2b4357aacff445c093f7dbe9d280d2bab472c0fd18654633aaac73240c0578"
+        },
+        {
+            "date": 1688360407730,
+            "name": "G:\\New File\\TypeScript\\digital-cow-server\\logs\\winston\\errors\\CH-2023-03-07-11-error.log",
+            "hash": "8a16e9cfe4f5ec2283896c69581e7151d04fcf2d19651ba0c284d68823f6697f"
         }
     ],
     "hashType": "sha256"
