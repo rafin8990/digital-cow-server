@@ -35,6 +35,7 @@ const loginUser = async (payload: ILogin): Promise<ILoginUserResponse> => {
     config.jwt_expires_in as string
   )
   const { needsPasswordChange } = isUserExist
+
   const refreshToken = jwtHelpers.createToken(
     { phoneNumber: isUserExist.phoneNumber, role: isUserExist.role },
     config.jwt_refresh_secret as Secret,

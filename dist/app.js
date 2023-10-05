@@ -15,7 +15,7 @@ app.use((0, cookie_parser_1.default)());
 //parser
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use('/api/v1', routes_1.default);
+app.use('/api/v1/', routes_1.default);
 app.use(globalErrorHandler_1.default);
 //Testing
 app.get('/', (req, res) => {

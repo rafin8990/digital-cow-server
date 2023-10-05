@@ -21,3 +21,5 @@ router.get('/', UserController.getAllUsers)
 router.get('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.getSingleUser)
 router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.deleteUser)
 export default router
+
+//everything is okay
