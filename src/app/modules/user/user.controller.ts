@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, RequestHandler, Response } from 'express'
 import httpStatus from 'http-status'
 import ApiError from '../../../errors/ApiError'
@@ -17,7 +18,11 @@ const createUser: RequestHandler = catchAsync(
         data: result,
       })
     } catch (error: any) {
-      if (error.code === 11000) {
+      if (
+        error.code === 11000 &&
+        error.keyPattern &&
+        error.keyPattern.phoneNumber
+      ) {
         // MongoDB duplicate key error
         throw new ApiError(500, 'Phone Number already exist')
       }

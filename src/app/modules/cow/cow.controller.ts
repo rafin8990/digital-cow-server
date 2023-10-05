@@ -14,7 +14,7 @@ const createCow: RequestHandler = catchAsync(
     const result = await CowService.createCow(cow)
     res.status(200).json({
       success: true,
-      message: 'user create successfully',
+      message: 'Cow posted successfully',
       data: result,
     })
   }
