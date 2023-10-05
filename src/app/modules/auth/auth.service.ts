@@ -13,7 +13,6 @@ import {
 const loginUser = async (payload: ILogin): Promise<ILoginUserResponse> => {
   const { phoneNumber, password } = payload
   const user = new User()
-
   const isUserExist = await user.isUserExist(phoneNumber)
   // check user exist in the database s
   if (!isUserExist) {

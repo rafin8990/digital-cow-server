@@ -60,6 +60,7 @@ userSchema.methods.isUserExist = async function (
       _id: 1,
       phoneNumber: 1,
       password: 1,
+      role: 1,
       needsPasswordChange: 1,
     }
   )

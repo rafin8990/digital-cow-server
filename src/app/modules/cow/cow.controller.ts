@@ -21,6 +21,7 @@ const createCow: RequestHandler = catchAsync(
 )
 
 const getAllCows = catchAsync(async (req: Request, res: Response) => {
+  console.log(req.user)
   const filters = pick(req.query, CowFilterableFields)
   const paginationOptions = pick(req.query, paginationFields)
 
