@@ -4,7 +4,7 @@ import auth from '../../middlewares/auth'
 import { OrderController } from './order.controller'
 const router = express.Router()
 
-router.post('/', OrderController.createOrder)
+router.post('/', auth(ENUM_USER_ROLE.BUYER), OrderController.createOrder)
 router.get(
   '/',
   auth(ENUM_USER_ROLE.SELLER, ENUM_USER_ROLE.ADMIN),

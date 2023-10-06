@@ -16,3 +16,4 @@ router.get('/', user_controller_1.UserController.getAllUsers);
 router.get('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.ADMIN), user_controller_1.UserController.getSingleUser);
 router.delete('/:id', (0, auth_1.default)(users_1.ENUM_USER_ROLE.ADMIN), user_controller_1.UserController.deleteUser);
 exports.default = router;
+//everything is okay

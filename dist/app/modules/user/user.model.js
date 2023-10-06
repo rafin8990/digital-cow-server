@@ -66,6 +66,7 @@ userSchema.methods.isUserExist = function (phoneNumber) {
             _id: 1,
             phoneNumber: 1,
             password: 1,
+            role: 1,
             needsPasswordChange: 1,
         });
         return user;

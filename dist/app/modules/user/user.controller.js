@@ -40,7 +40,9 @@ const createUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
         });
     }
     catch (error) {
-        if (error.code === 11000) {
+        if (error.code === 11000 &&
+            error.keyPattern &&
+            error.keyPattern.phoneNumber) {
             // MongoDB duplicate key error
             throw new ApiError_1.default(500, 'Phone Number already exist');
         }

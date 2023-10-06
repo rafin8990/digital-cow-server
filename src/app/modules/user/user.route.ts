@@ -17,7 +17,7 @@ router.patch(
   auth(ENUM_USER_ROLE.ADMIN),
   UserController.updateUser
 )
-router.get('/', UserController.getAllUsers)
+router.get('/', auth(ENUM_USER_ROLE.ADMIN), UserController.getAllUsers)
 router.get('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.getSingleUser)
 router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), UserController.deleteUser)
 export default router

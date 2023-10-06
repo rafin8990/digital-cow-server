@@ -20,6 +20,11 @@ const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
     if (!user.password) {
         user.password = config_1.default.default_user_password;
     }
+    // // hashing password
+    // user.password = await bcrypt.hash(
+    //   user.password,
+    //   Number(config.bcrypt_salt_round)
+    // )
     const createUser = yield user_model_1.User.create(user);
     if (!createUser) {
         throw new ApiError_1.default(400, 'Failed to create User');

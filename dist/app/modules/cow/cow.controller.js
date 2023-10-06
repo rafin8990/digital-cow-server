@@ -36,11 +36,12 @@ const createCow = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
     const result = yield cow_service_1.CowService.createCow(cow);
     res.status(200).json({
         success: true,
-        message: 'user create successfully',
+        message: 'Cow posted successfully',
         data: result,
     });
 }));
 const getAllCows = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.user);
     const filters = (0, pick_1.default)(req.query, cow_constant_1.CowFilterableFields);
     const paginationOptions = (0, pick_1.default)(req.query, pagination_1.paginationFields);
     const result = yield cow_service_1.CowService.getAllCows(filters, paginationOptions);
